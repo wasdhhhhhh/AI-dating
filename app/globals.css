@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --foreground-muted: #6b7280;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --foreground-muted: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  /* 导航按钮样式 */
+  .nav-button {
+    @apply px-6 py-3 rounded-full;
+    @apply bg-primary text-white;
+    @apply transition-colors;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .nav-button:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+  }
+
+  /* 问题容器样式 */
+  .question-container {
+    @apply flex flex-col min-h-[60vh] justify-center items-center;
+    @apply max-w-2xl mx-auto px-4 py-8;
+  }
+
+  /* 选项按钮样式 */
+  .option-button {
+    @apply w-full text-left p-4 rounded-lg;
+    @apply transition-colors;
+    border: 1px solid var(--border-color);
+  }
+
+  .option-button:hover {
+    border-color: var(--primary);
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+}
